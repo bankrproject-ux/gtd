@@ -130,7 +130,7 @@ footer a:focus-visible{outline-color:var(--yellow)}
           <div class="task-body">
             <div class="task-title">Follow @boxheadfun</div>
             <div class="task-sub">Unfollowing before mint removes you from the list.</div>
-            <a class="mini" href="https://x.com/intent/follow?screen_name=boxheadfun" rel="noopener">Follow now</a>
+            <a class="mini" id="follow" href="https://x.com/intent/follow?screen_name=boxheadfun" rel="noopener">Follow now</a>
           </div>
         </div>
 
@@ -139,7 +139,7 @@ footer a:focus-visible{outline-color:var(--yellow)}
           <div class="task-body">
             <div class="task-title">Repost the pinned post</div>
             <div class="task-sub">Open the profile and repost the post pinned at the top.</div>
-            <a class="mini" href="https://x.com/boxheadfun" rel="noopener">Open pinned post</a>
+            <a class="mini" id="repost" href="https://x.com/boxheadfun" rel="noopener">Open pinned post</a>
           </div>
         </div>
 
@@ -229,6 +229,21 @@ ticks.forEach(function(t){
     refresh();
   });
 });
+
+function autoTick(linkId, index){
+  var link = document.getElementById(linkId);
+  if(!link) return;
+  link.addEventListener('click', function(){
+    setTimeout(function(){
+      ticks[index].setAttribute('aria-pressed', 'true');
+      refresh();
+    }, 800);
+  });
+}
+
+autoTick('follow', 0);
+autoTick('repost', 1);
+autoTick('share', 2);
 
 document.getElementById('form').addEventListener('submit', function(e){
   e.preventDefault();
