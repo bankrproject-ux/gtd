@@ -166,7 +166,7 @@ footer a:focus-visible{outline-color:var(--yellow)}
 
           <div class="field">
             <label for="addr">Robinhood Chain wallet address</label>
-            <input type="text" id="addr" name="addr" placeholder="0x…" autocomplete="off" spellcheck="false">
+            <input type="text" id="addr" name="address" placeholder="0x…" autocomplete="off" spellcheck="false">
             <p class="hint">Public receiving address only — starts with 0x and is 42 characters long.</p>
             <p class="err" id="err-addr">That doesn't look like a valid 0x address.</p>
           </div>
@@ -197,7 +197,7 @@ footer a:focus-visible{outline-color:var(--yellow)}
 </footer>
 
 <script>
-window.BOXHEAD_ENDPOINT = "";
+window.BOXHEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbxUavNG-jTGRoAwDSO2uX_Pn4_-bt9E6-e97ufRm_w6s0iMkMlxD0nXWQDHbGP2TJHm/exec";
 
 var shareText = "3,333 boxheads that have seen enough. No token, no staking, no roadmap. @boxheadfun on Robinhood Chain.";
 document.getElementById('share').href = "https://x.com/intent/post?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent(location.origin + location.pathname);
@@ -243,10 +243,13 @@ document.getElementById('form').addEventListener('submit', function(e){
   submit.disabled = true;
   submit.textContent = 'Sending…';
 
+  var body = 'handle=' + encodeURIComponent('@' + h) + '&address=' + encodeURIComponent(a);
+
   fetch(window.BOXHEAD_ENDPOINT, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ handle: '@' + h, address: a })
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: body
   }).then(function(){
     document.getElementById('form').style.display = 'none';
     document.getElementById('done').classList.add('show');
