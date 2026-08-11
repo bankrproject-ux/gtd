@@ -6,7 +6,7 @@
 <title>BoxHead — GTD waitlist</title>
 <meta name="description" content="Join the BoxHead GTD list. 3,333 on Robinhood Chain.">
 <meta property="og:title" content="BoxHead — GTD waitlist">
-<meta property="og:description" content="Three tasks. One form. 3,333 heads on Robinhood Chain.">
+<meta property="og:description" content="3,333 heads on Robinhood Chain. Three tasks, one form.">
 <meta property="og:image" content="img/boxhead-01.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@ nav{border-bottom:var(--line) solid var(--ink);position:sticky;top:0;z-index:50;
 
 .head{padding:64px 0 44px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:center}
 .eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;border:3px solid var(--ink);padding:5px 12px;margin-bottom:20px}
-h1{font-size:clamp(46px,7.6vw,88px)}
+h1{font-size:clamp(56px,9vw,104px)}
 .lede{font-size:19px;max-width:46ch;margin-top:20px}
 .head-art{border:var(--line) solid var(--ink);box-shadow:12px 12px 0 var(--ink);line-height:0;overflow:hidden}
 .head-art img{width:100%;display:block}
@@ -48,7 +48,6 @@ section{border-top:var(--line) solid var(--ink);padding:68px 0}
 .task-body{min-width:0}
 .task-title{font-family:'Archivo Black';font-size:16px;text-transform:uppercase;letter-spacing:0.01em}
 .task-sub{font-size:14px;opacity:0.75;margin-top:3px}
-.task-sub a{color:var(--ink);font-weight:600}
 .mini{display:inline-block;margin-top:9px;font-family:'Archivo Black';font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--yellow);background:var(--ink);border:3px solid var(--ink);padding:7px 13px;text-decoration:none}
 .mini:hover{background:transparent;color:var(--ink)}
 .progress{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-top:22px;padding-top:16px;border-top:2px solid rgba(10,10,10,0.2)}
@@ -104,8 +103,8 @@ footer a:focus-visible{outline-color:var(--yellow)}
   <header class="head">
     <div>
       <span class="eyebrow">GTD waitlist — open</span>
-      <h1>Three tasks.<br>One form.</h1>
-      <p class="lede">Guaranteed spots for 3,333 heads on Robinhood Chain. Do the three tasks, drop your handle and address, and you're on the list.</p>
+      <h1>BoxHead</h1>
+      <p class="lede">3,333 heads on Robinhood Chain. Finish three tasks, leave your handle and address, and you're on the guaranteed list.</p>
     </div>
     <div class="head-art">
       <img src="img/boxhead-01.png" alt="A BoxHead character: a yellow cardboard box head with half-closed eyes and a lopsided grin.">
@@ -124,13 +123,14 @@ footer a:focus-visible{outline-color:var(--yellow)}
 
       <div class="panel">
         <h3 style="font-size:20px;margin-bottom:6px">The tasks</h3>
-        <p style="font-size:14px;opacity:0.7;margin-bottom:8px">All three are checked manually before the list is finalised.</p>
+        <p style="font-size:14px;opacity:0.7;margin-bottom:8px">All three are checked manually before the list is finalized.</p>
 
         <div class="task">
           <button class="tick" type="button" aria-pressed="false" aria-label="Mark follow as done" data-task></button>
           <div class="task-body">
             <div class="task-title">Follow @boxheadfun</div>
-            <div class="task-sub"><a href="https://x.com/boxheadfun">Open the profile</a> — unfollowing before mint removes you.</div>
+            <div class="task-sub">Unfollowing before mint removes you from the list.</div>
+            <a class="mini" href="https://x.com/boxheadfun" rel="noopener">Open profile</a>
           </div>
         </div>
 
@@ -138,7 +138,8 @@ footer a:focus-visible{outline-color:var(--yellow)}
           <button class="tick" type="button" aria-pressed="false" aria-label="Mark repost as done" data-task></button>
           <div class="task-body">
             <div class="task-title">Repost the pinned post</div>
-            <div class="task-sub"><a href="https://x.com/boxheadfun">Go to the pinned post</a> and hit repost.</div>
+            <div class="task-sub">Open the profile and repost the post pinned at the top.</div>
+            <a class="mini" href="https://x.com/boxheadfun" rel="noopener">Open pinned post</a>
           </div>
         </div>
 
@@ -199,7 +200,7 @@ footer a:focus-visible{outline-color:var(--yellow)}
 <script>
 window.BOXHEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbxUavNG-jTGRoAwDSO2uX_Pn4_-bt9E6-e97ufRm_w6s0iMkMlxD0nXWQDHbGP2TJHm/exec";
 
-var shareText = "3,333 boxheads that have seen enough. No token, no staking, no roadmap. @boxheadfun on Robinhood Chain.";
+var shareText = "Everyone's shouting. This one's just standing there. 3,333 BOXHEAD on Robinhood Chain. @boxheadfun";
 document.getElementById('share').href = "https://x.com/intent/post?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent(location.origin + location.pathname);
 
 var ticks = document.querySelectorAll('[data-task]');
