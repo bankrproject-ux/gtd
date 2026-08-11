@@ -130,7 +130,7 @@ footer a:focus-visible{outline-color:var(--yellow)}
           <div class="task-body">
             <div class="task-title">Follow @boxheadfun</div>
             <div class="task-sub">Unfollowing before mint removes you from the list.</div>
-            <a class="mini" href="https://x.com/boxheadfun" rel="noopener">Open profile</a>
+            <a class="mini" href="https://x.com/intent/follow?screen_name=boxheadfun" rel="noopener">Follow now</a>
           </div>
         </div>
 
@@ -170,6 +170,13 @@ footer a:focus-visible{outline-color:var(--yellow)}
             <input type="text" id="addr" name="address" placeholder="0x…" autocomplete="off" spellcheck="false">
             <p class="hint">Public receiving address only — starts with 0x and is 42 characters long.</p>
             <p class="err" id="err-addr">That doesn't look like a valid 0x address.</p>
+          </div>
+
+          <div class="field">
+            <label for="shareurl">Link to your post</label>
+            <input type="text" id="shareurl" name="shareurl" placeholder="https://x.com/you/status/…" autocomplete="off" spellcheck="false">
+            <p class="hint">Open your post on X, hit share, copy link. This is how the task gets verified.</p>
+            <p class="err" id="err-share">Paste the full link to your post — it should contain /status/.</p>
           </div>
 
           <button class="btn" type="submit" id="submit" disabled>Finish the tasks first</button>
@@ -227,8 +234,10 @@ document.getElementById('form').addEventListener('submit', function(e){
   e.preventDefault();
   var handle = document.getElementById('handle');
   var addr = document.getElementById('addr');
+  var shareurl = document.getElementById('shareurl');
   var eh = document.getElementById('err-handle');
   var ea = document.getElementById('err-addr');
+  var es = document.getElementById('err-share');
   var ok = true;
 
   var h = handle.value.trim().replace(/^@/, '');
@@ -239,12 +248,18 @@ document.getElementById('form').addEventListener('submit', function(e){
   if(!/^0x[a-fA-F0-9]{40}$/.test(a)){ ea.classList.add('show'); addr.setAttribute('aria-invalid','true'); ok = false; }
   else { ea.classList.remove('show'); addr.removeAttribute('aria-invalid'); }
 
+  var s = shareurl.value.trim();
+  if(!/^https?:\/\/(x|twitter)\.com\/[A-Za-z0-9_]+\/status\/\d+/.test(s)){ es.classList.add('show'); shareurl.setAttribute('aria-invalid','true'); ok = false; }
+  else { es.classList.remove('show'); shareurl.removeAttribute('aria-invalid'); }
+
   if(!ok) return;
 
   submit.disabled = true;
   submit.textContent = 'Sending…';
 
-  var body = 'handle=' + encodeURIComponent('@' + h) + '&address=' + encodeURIComponent(a);
+  var body = 'handle=' + encodeURIComponent('@' + h)
+           + '&address=' + encodeURIComponent(a)
+           + '&shareurl=' + encodeURIComponent(s);
 
   fetch(window.BOXHEAD_ENDPOINT, {
     method: 'POST',
