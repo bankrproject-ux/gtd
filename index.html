@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BoxHead — GTD waitlist</title>
+<meta name="description" content="Join the BoxHead GTD list. 3,333 on Robinhood Chain.">
+<meta property="og:title" content="BoxHead — GTD waitlist">
+<meta property="og:description" content="Three tasks. One form. 3,333 heads on Robinhood Chain.">
+<meta property="og:image" content="img/boxhead-01.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+:root{--yellow:#FFC800;--ink:#0A0A0A;--paper:#FFF4D1;--line:4px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--yellow);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+h1,h2,h3,.mark{font-family:'Archivo Black',system-ui,sans-serif;font-weight:400;line-height:0.92;letter-spacing:-0.02em;text-transform:uppercase}
+
+nav{border-bottom:var(--line) solid var(--ink);position:sticky;top:0;z-index:50;background:var(--yellow)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.mark{font-size:20px;letter-spacing:-0.03em}
+.nav-links a{color:var(--ink);text-decoration:none;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid transparent}
+.nav-links a:hover{border-bottom-color:var(--ink)}
+
+.head{padding:64px 0 44px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:center}
+.eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;border:3px solid var(--ink);padding:5px 12px;margin-bottom:20px}
+h1{font-size:clamp(46px,7.6vw,88px)}
+.lede{font-size:19px;max-width:46ch;margin-top:20px}
+.head-art{border:var(--line) solid var(--ink);box-shadow:12px 12px 0 var(--ink);line-height:0;overflow:hidden}
+.head-art img{width:100%;display:block}
+
+section{border-top:var(--line) solid var(--ink);padding:68px 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+.sec-head h2{font-size:clamp(28px,4.4vw,46px)}
+.sec-note{font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.panel{border:var(--line) solid var(--ink);background:var(--paper);box-shadow:10px 10px 0 var(--ink);padding:28px}
+
+.task{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:2px solid rgba(10,10,10,0.18)}
+.task:last-of-type{border-bottom:0;padding-bottom:4px}
+.tick{flex:0 0 auto;width:32px;height:32px;border:3px solid var(--ink);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black';font-size:16px;color:var(--yellow);padding:0}
+.tick[aria-pressed="true"]{background:var(--ink)}
+.tick[aria-pressed="true"]::after{content:"X"}
+.task-body{min-width:0}
+.task-title{font-family:'Archivo Black';font-size:16px;text-transform:uppercase;letter-spacing:0.01em}
+.task-sub{font-size:14px;opacity:0.75;margin-top:3px}
+.task-sub a{color:var(--ink);font-weight:600}
+.mini{display:inline-block;margin-top:9px;font-family:'Archivo Black';font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--yellow);background:var(--ink);border:3px solid var(--ink);padding:7px 13px;text-decoration:none}
+.mini:hover{background:transparent;color:var(--ink)}
+.progress{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-top:22px;padding-top:16px;border-top:2px solid rgba(10,10,10,0.2)}
+
+label{display:block;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:7px}
+.field{margin-bottom:22px}
+input[type=text]{width:100%;padding:14px 15px;border:3px solid var(--ink);background:#fff;color:var(--ink);font-family:'Archivo',sans-serif;font-size:16px;border-radius:0}
+input::placeholder{color:rgba(10,10,10,0.4)}
+input:focus{outline:none;box-shadow:5px 5px 0 var(--ink)}
+input[aria-invalid="true"]{border-color:#B3261E}
+.hint{font-size:13px;opacity:0.65;margin-top:6px;line-height:1.45}
+.err{font-size:13px;color:#8C1D18;font-weight:600;margin-top:6px;display:none}
+.err.show{display:block}
+
+.btn{font-family:'Archivo Black';font-size:15px;letter-spacing:0.04em;text-transform:uppercase;padding:16px 28px;border:var(--line) solid var(--ink);background:var(--ink);color:var(--yellow);cursor:pointer;width:100%;box-shadow:6px 6px 0 rgba(10,10,10,0.25);transition:transform .08s ease, box-shadow .08s ease}
+.btn:hover:not(:disabled){transform:translate(3px,3px);box-shadow:3px 3px 0 rgba(10,10,10,0.25)}
+.btn:disabled{background:transparent;color:var(--ink);opacity:0.4;box-shadow:none;cursor:not-allowed;border-style:dashed}
+
+.safe{font-size:13px;margin-top:20px;padding-top:16px;border-top:2px solid rgba(10,10,10,0.2);opacity:0.78;line-height:1.55}
+
+.done{display:none;text-align:center;padding:22px 6px}
+.done.show{display:block}
+.done .big{font-family:'Archivo Black';font-size:44px;line-height:0.9;letter-spacing:-0.03em}
+.done p{margin-top:14px;font-size:16px}
+
+footer{border-top:var(--line) solid var(--ink);padding:48px 0 60px;background:var(--ink);color:var(--yellow)}
+footer .mark{font-size:40px;letter-spacing:-0.04em}
+.foot-row{display:flex;justify-content:space-between;align-items:flex-end;gap:26px;flex-wrap:wrap}
+.foot-links a{color:var(--yellow);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;text-decoration:none;border-bottom:2px solid var(--yellow)}
+.fine{font-size:12px;opacity:0.55;margin-top:24px;max-width:58ch;line-height:1.6}
+
+@media (max-width:840px){
+  .head{grid-template-columns:1fr;gap:34px;padding:44px 0 34px}
+  .head-art{order:-1}
+  .cols{grid-template-columns:1fr}
+  section{padding:52px 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+a:focus-visible,button:focus-visible{outline:4px solid var(--ink);outline-offset:3px}
+footer a:focus-visible{outline-color:var(--yellow)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <div class="mark">BoxHead</div>
+    <div class="nav-links"><a href="https://x.com/boxheadfun">X / @boxheadfun</a></div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="head">
+    <div>
+      <span class="eyebrow">GTD waitlist — open</span>
+      <h1>Three tasks.<br>One form.</h1>
+      <p class="lede">Guaranteed spots for 3,333 heads on Robinhood Chain. Do the three tasks, drop your handle and address, and you're on the list.</p>
+    </div>
+    <div class="head-art">
+      <img src="img/boxhead-01.png" alt="A BoxHead character: a yellow cardboard box head with half-closed eyes and a lopsided grin.">
+    </div>
+  </header>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Get on the list</h2>
+      <span class="sec-note">Takes about a minute</span>
+    </div>
+
+    <div class="cols">
+
+      <div class="panel">
+        <h3 style="font-size:20px;margin-bottom:6px">The tasks</h3>
+        <p style="font-size:14px;opacity:0.7;margin-bottom:8px">All three are checked manually before the list is finalised.</p>
+
+        <div class="task">
+          <button class="tick" type="button" aria-pressed="false" aria-label="Mark follow as done" data-task></button>
+          <div class="task-body">
+            <div class="task-title">Follow @boxheadfun</div>
+            <div class="task-sub"><a href="https://x.com/boxheadfun">Open the profile</a> — unfollowing before mint removes you.</div>
+          </div>
+        </div>
+
+        <div class="task">
+          <button class="tick" type="button" aria-pressed="false" aria-label="Mark repost as done" data-task></button>
+          <div class="task-body">
+            <div class="task-title">Repost the pinned post</div>
+            <div class="task-sub"><a href="https://x.com/boxheadfun">Go to the pinned post</a> and hit repost.</div>
+          </div>
+        </div>
+
+        <div class="task">
+          <button class="tick" type="button" aria-pressed="false" aria-label="Mark share as done" data-task></button>
+          <div class="task-body">
+            <div class="task-title">Share it with a friend</div>
+            <div class="task-sub">Tag someone who'd get the joke. One is enough — mass tagging gets you removed.</div>
+            <a class="mini" id="share" href="#" rel="noopener">Open X to post</a>
+          </div>
+        </div>
+
+        <p class="progress" id="progress">0 of 3 done</p>
+      </div>
+
+      <div class="panel">
+        <form id="form" novalidate>
+          <h3 style="font-size:20px;margin-bottom:18px">Your details</h3>
+
+          <div class="field">
+            <label for="handle">X username</label>
+            <input type="text" id="handle" name="handle" placeholder="@yourhandle" autocomplete="off" spellcheck="false">
+            <p class="err" id="err-handle">Enter your X username.</p>
+          </div>
+
+          <div class="field">
+            <label for="addr">Robinhood Chain wallet address</label>
+            <input type="text" id="addr" name="addr" placeholder="0x…" autocomplete="off" spellcheck="false">
+            <p class="hint">Public receiving address only — starts with 0x and is 42 characters long.</p>
+            <p class="err" id="err-addr">That doesn't look like a valid 0x address.</p>
+          </div>
+
+          <button class="btn" type="submit" id="submit" disabled>Finish the tasks first</button>
+
+          <p class="safe">Never type a seed phrase or private key into this or any other site. BoxHead will never ask for one, will never DM you first, and will never ask you to connect a wallet before mint day.</p>
+        </form>
+
+        <div class="done" id="done">
+          <div class="big">You're on<br>the list</div>
+          <p>Keep the follow active until mint. Everything else gets announced on X first — this site never announces anything before the account does.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="mark">BoxHead</div>
+      <div class="foot-links"><a href="https://x.com/boxheadfun">X / @boxheadfun</a></div>
+    </div>
+    <p class="fine">This is the only official BoxHead site. Every link is posted from @boxheadfun first — if you found this anywhere else, check the account before entering anything. Nothing here is an investment or investment advice.</p>
+  </div>
+</footer>
+
+<script>
+window.BOXHEAD_ENDPOINT = "";
+
+var shareText = "3,333 boxheads that have seen enough. No token, no staking, no roadmap. @boxheadfun on Robinhood Chain.";
+document.getElementById('share').href = "https://x.com/intent/post?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent(location.origin + location.pathname);
+
+var ticks = document.querySelectorAll('[data-task]');
+var submit = document.getElementById('submit');
+var progress = document.getElementById('progress');
+
+function refresh(){
+  var n = 0;
+  ticks.forEach(function(t){ if(t.getAttribute('aria-pressed') === 'true') n++; });
+  progress.textContent = n + ' of 3 done';
+  var all = n === ticks.length;
+  submit.disabled = !all;
+  submit.textContent = all ? 'Join the GTD list' : 'Finish the tasks first';
+}
+
+ticks.forEach(function(t){
+  t.addEventListener('click', function(){
+    t.setAttribute('aria-pressed', t.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    refresh();
+  });
+});
+
+document.getElementById('form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var handle = document.getElementById('handle');
+  var addr = document.getElementById('addr');
+  var eh = document.getElementById('err-handle');
+  var ea = document.getElementById('err-addr');
+  var ok = true;
+
+  var h = handle.value.trim().replace(/^@/, '');
+  if(!/^[A-Za-z0-9_]{1,15}$/.test(h)){ eh.classList.add('show'); handle.setAttribute('aria-invalid','true'); ok = false; }
+  else { eh.classList.remove('show'); handle.removeAttribute('aria-invalid'); }
+
+  var a = addr.value.trim();
+  if(!/^0x[a-fA-F0-9]{40}$/.test(a)){ ea.classList.add('show'); addr.setAttribute('aria-invalid','true'); ok = false; }
+  else { ea.classList.remove('show'); addr.removeAttribute('aria-invalid'); }
+
+  if(!ok) return;
+
+  submit.disabled = true;
+  submit.textContent = 'Sending…';
+
+  fetch(window.BOXHEAD_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ handle: '@' + h, address: a })
+  }).then(function(){
+    document.getElementById('form').style.display = 'none';
+    document.getElementById('done').classList.add('show');
+  }).catch(function(){
+    submit.disabled = false;
+    submit.textContent = 'Try again';
+  });
+});
+
+refresh();
+</script>
+
+</body>
+</html>
