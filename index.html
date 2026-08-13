@@ -3,296 +3,157 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BoxHead — GTD waitlist</title>
-<meta name="description" content="Join the BoxHead GTD list. 3,333 on Robinhood Chain.">
-<meta property="og:title" content="BoxHead — GTD waitlist">
-<meta property="og:description" content="3,333 heads on Robinhood Chain. Three tasks, one form.">
-<meta property="og:image" content="https://theboxhead.fun/img/boxhead-01.png">
-<meta property="og:url" content="https://theboxhead.fun/">
+<title>BoxHead</title>
+<meta name="description" content="BoxHead — 3,333 on Robinhood Chain.">
+<meta property="og:title" content="BoxHead">
+<meta property="og:description" content="3,333 heads that have seen enough.">
+<meta property="og:image" content="https://theboxhead.fun/img/hero.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="img/boxhead-01.png">
+<link rel="icon" href="img/hero.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
-:root{--yellow:#FFC800;--ink:#0A0A0A;--paper:#FFF4D1;--line:4px}
+:root{--yellow:#FFC800;--ink:#0A0A0A}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--yellow);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
-h1,h2,h3,.mark{font-family:'Archivo Black',system-ui,sans-serif;font-weight:400;line-height:0.92;letter-spacing:-0.02em;text-transform:uppercase}
-
-nav{border-bottom:var(--line) solid var(--ink);position:sticky;top:0;z-index:50;background:var(--yellow)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
-.mark{font-size:20px;letter-spacing:-0.03em}
-.nav-links a{color:var(--ink);text-decoration:none;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid transparent}
-.nav-links a:hover{border-bottom-color:var(--ink)}
-
-.head{padding:64px 0 44px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:center}
-.eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;border:3px solid var(--ink);padding:5px 12px;margin-bottom:20px}
-h1{font-size:clamp(56px,9vw,104px)}
-.lede{font-size:19px;max-width:46ch;margin-top:20px}
-.head-art{border:var(--line) solid var(--ink);box-shadow:12px 12px 0 var(--ink);line-height:0;overflow:hidden}
-.head-art img{width:100%;display:block}
-
-section{border-top:var(--line) solid var(--ink);padding:68px 0}
-.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
-.sec-head h2{font-size:clamp(28px,4.4vw,46px)}
-.sec-note{font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6}
-
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
-.panel{border:var(--line) solid var(--ink);background:var(--paper);box-shadow:10px 10px 0 var(--ink);padding:28px}
-
-.task{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:2px solid rgba(10,10,10,0.18)}
-.task:last-of-type{border-bottom:0;padding-bottom:4px}
-.tick{flex:0 0 auto;width:32px;height:32px;border:3px solid var(--ink);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black';font-size:16px;color:var(--yellow);padding:0}
-.tick[aria-pressed="true"]{background:var(--ink)}
-.tick[aria-pressed="true"]::after{content:"X"}
-.task-body{min-width:0}
-.task-title{font-family:'Archivo Black';font-size:16px;text-transform:uppercase;letter-spacing:0.01em}
-.task-sub{font-size:14px;opacity:0.75;margin-top:3px}
-.mini{display:inline-block;margin-top:9px;font-family:'Archivo Black';font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--yellow);background:var(--ink);border:3px solid var(--ink);padding:7px 13px;text-decoration:none}
-.mini:hover{background:transparent;color:var(--ink)}
-.progress{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-top:22px;padding-top:16px;border-top:2px solid rgba(10,10,10,0.2)}
-
-label{display:block;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:7px}
-.field{margin-bottom:22px}
-input[type=text]{width:100%;padding:14px 15px;border:3px solid var(--ink);background:#fff;color:var(--ink);font-family:'Archivo',sans-serif;font-size:16px;border-radius:0}
-input::placeholder{color:rgba(10,10,10,0.4)}
-input:focus{outline:none;box-shadow:5px 5px 0 var(--ink)}
-input[aria-invalid="true"]{border-color:#B3261E}
-.hint{font-size:13px;opacity:0.65;margin-top:6px;line-height:1.45}
-.err{font-size:13px;color:#8C1D18;font-weight:600;margin-top:6px;display:none}
-.err.show{display:block}
-
-.btn{font-family:'Archivo Black';font-size:15px;letter-spacing:0.04em;text-transform:uppercase;padding:16px 28px;border:var(--line) solid var(--ink);background:var(--ink);color:var(--yellow);cursor:pointer;width:100%;box-shadow:6px 6px 0 rgba(10,10,10,0.25);transition:transform .08s ease, box-shadow .08s ease}
-.btn:hover:not(:disabled){transform:translate(3px,3px);box-shadow:3px 3px 0 rgba(10,10,10,0.25)}
-.btn:disabled{background:transparent;color:var(--ink);opacity:0.4;box-shadow:none;cursor:not-allowed;border-style:dashed}
-
-.safe{font-size:13px;margin-top:20px;padding-top:16px;border-top:2px solid rgba(10,10,10,0.2);opacity:0.78;line-height:1.55}
-
-.done{display:none;text-align:center;padding:22px 6px}
-.done.show{display:block}
-.done .big{font-family:'Archivo Black';font-size:44px;line-height:0.9;letter-spacing:-0.03em}
-.done p{margin-top:14px;font-size:16px}
-
-footer{border-top:var(--line) solid var(--ink);padding:48px 0 60px;background:var(--ink);color:var(--yellow)}
-footer .mark{font-size:40px;letter-spacing:-0.04em}
-.foot-row{display:flex;justify-content:space-between;align-items:flex-end;gap:26px;flex-wrap:wrap}
-.foot-links a{color:var(--yellow);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;text-decoration:none;border-bottom:2px solid var(--yellow)}
-.fine{font-size:12px;opacity:0.55;margin-top:24px;max-width:58ch;line-height:1.6}
-
-@media (max-width:840px){
-  .head{grid-template-columns:1fr;gap:34px;padding:44px 0 34px}
-  .head-art{order:-1}
-  .cols{grid-template-columns:1fr}
-  section{padding:52px 0}
+html,body{height:100%}
+body{
+  background:var(--yellow);color:var(--ink);
+  font-family:'Archivo',system-ui,sans-serif;
+  min-height:100vh;min-height:100dvh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:24px;text-align:center;overflow:hidden;
+  -webkit-font-smoothing:antialiased;
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
-a:focus-visible,button:focus-visible{outline:4px solid var(--ink);outline-offset:3px}
-footer a:focus-visible{outline-color:var(--yellow)}
+
+/* ---------- falling ink drops ---------- */
+.ink-field{position:fixed;inset:0;pointer-events:none;z-index:0}
+.drop{
+  position:absolute;top:-60px;
+  width:14px;height:18px;
+  background:var(--ink);
+  border-radius:50% 50% 50% 50% / 65% 65% 35% 35%;
+  clip-path:path("M7 0C7 0 0 9 0 13a7 7 0 0 0 14 0C14 9 7 0 7 0z");
+  animation:fall linear infinite;
+  opacity:0.22;
+}
+@keyframes fall{
+  0%{transform:translateY(-60px) scaleY(1)}
+  85%{transform:translateY(105vh) scaleY(1.25)}
+  100%{transform:translateY(105vh) scaleY(1.25)}
+}
+
+/* ---------- content ---------- */
+.stage{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+
+.art{
+  width:clamp(140px,34vw,200px);
+  border:4px solid var(--ink);
+  box-shadow:12px 12px 0 var(--ink);
+  overflow:hidden;line-height:0;margin-bottom:44px;
+  animation:bob 4.5s ease-in-out infinite;
+}
+.art img{width:100%;display:block}
+@keyframes bob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-9px)}
+}
+
+h1{
+  font-family:'Archivo Black',sans-serif;font-weight:400;
+  font-size:clamp(44px,11vw,88px);
+  letter-spacing:-0.035em;text-transform:uppercase;line-height:1;
+  position:relative;
+}
+.dots{display:inline-block;width:1.15em;text-align:left}
+.dots span{opacity:0;animation:blink 1.5s infinite}
+.dots span:nth-child(2){animation-delay:.22s}
+.dots span:nth-child(3){animation-delay:.44s}
+@keyframes blink{0%,62%,100%{opacity:0}30%{opacity:1}}
+
+/* ---------- ink-fill progress bar ---------- */
+.bar{
+  position:relative;
+  width:min(320px,78vw);height:22px;
+  border:4px solid var(--ink);
+  margin-top:36px;overflow:hidden;
+  background:transparent;
+}
+.bar-fill{
+  position:absolute;inset:0;
+  background:var(--ink);
+  width:38%;
+  animation:sweep 2.1s cubic-bezier(.55,.06,.45,.94) infinite;
+}
+@keyframes sweep{
+  0%{transform:translateX(-105%)}
+  100%{transform:translateX(275%)}
+}
+
+.sub{
+  margin-top:34px;font-size:14px;font-weight:600;
+  letter-spacing:0.14em;text-transform:uppercase;opacity:0.62;
+}
+
+.link{
+  margin-top:38px;
+  font-family:'Archivo Black',sans-serif;font-size:13px;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--yellow);background:var(--ink);
+  border:4px solid var(--ink);padding:14px 24px;
+  text-decoration:none;display:inline-block;
+  box-shadow:6px 6px 0 rgba(10,10,10,0.28);
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.link:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 rgba(10,10,10,0.28)}
+
+@media (prefers-reduced-motion:reduce){
+  .ink-field{display:none}
+  .art{animation:none}
+  .dots span{animation:none;opacity:1}
+  .bar-fill{animation:none;width:100%}
+}
+a:focus-visible{outline:4px solid var(--ink);outline-offset:4px}
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="wrap nav-in">
-    <div class="mark">BoxHead</div>
-    <div class="nav-links"><a href="https://x.com/boxheadfun" target="_blank" rel="noopener">X / @boxheadfun</a></div>
-  </div>
-</nav>
+<div class="ink-field" id="ink" aria-hidden="true"></div>
 
-<div class="wrap">
-  <header class="head">
-    <div>
-      <span class="eyebrow">GTD waitlist — open</span>
-      <h1>BoxHead</h1>
-      <p class="lede">3,333 heads on Robinhood Chain. Finish three tasks, leave your handle and address, and you're on the guaranteed list.</p>
-    </div>
-    <div class="head-art">
-      <img src="img/boxhead-01.png" alt="A BoxHead character: a yellow cardboard box head with half-closed eyes and a lopsided grin.">
-    </div>
-  </header>
+<div class="stage">
+  <div class="art">
+    <img src="img/hero.png" alt="A BoxHead character with a box for a head.">
+  </div>
+
+  <h1>Loading<span class="dots"><span>.</span><span>.</span><span>.</span></span></h1>
+
+  <div class="bar" role="progressbar" aria-label="Site under construction">
+    <div class="bar-fill"></div>
+  </div>
+
+  <p class="sub">Not in a hurry. Neither is he.</p>
+
+  <a class="link" href="https://x.com/boxheadfun" target="_blank" rel="noopener">Everything gets posted on X first</a>
 </div>
 
-<section>
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>Get on the list</h2>
-      <span class="sec-note">Takes about a minute</span>
-    </div>
-
-    <div class="cols">
-
-      <div class="panel">
-        <h3 style="font-size:20px;margin-bottom:6px">The tasks</h3>
-        <p style="font-size:14px;opacity:0.7;margin-bottom:8px">All three are checked manually before the list is finalized.</p>
-
-        <div class="task">
-          <button class="tick" type="button" aria-pressed="false" aria-label="Mark follow as done" data-task></button>
-          <div class="task-body">
-            <div class="task-title">Follow @boxheadfun</div>
-            <div class="task-sub">Unfollowing before mint removes you from the list.</div>
-            <a class="mini" id="follow" href="https://x.com/intent/follow?screen_name=boxheadfun" target="_blank" rel="noopener">Follow now</a>
-          </div>
-        </div>
-
-        <div class="task">
-          <button class="tick" type="button" aria-pressed="false" aria-label="Mark repost as done" data-task></button>
-          <div class="task-body">
-            <div class="task-title">Repost the pinned post</div>
-            <div class="task-sub">Confirm the repost when X opens.</div>
-            <a class="mini" id="repost" href="https://x.com/intent/retweet?tweet_id=2087171203630854223" target="_blank" rel="noopener">Repost now</a>
-          </div>
-        </div>
-
-        <div class="task">
-          <button class="tick" type="button" aria-pressed="false" aria-label="Mark post as done" data-task></button>
-          <div class="task-body">
-            <div class="task-title">Post about it</div>
-            <div class="task-sub">Post it on X, then paste the link below.</div>
-            <a class="mini" id="share" href="#" target="_blank" rel="noopener">Open X to post</a>
-          </div>
-        </div>
-
-        <p class="progress" id="progress">0 of 3 done</p>
-      </div>
-
-      <div class="panel">
-        <form id="form" novalidate>
-          <h3 style="font-size:20px;margin-bottom:18px">Your details</h3>
-
-          <div class="field">
-            <label for="handle">X username</label>
-            <input type="text" id="handle" name="handle" placeholder="@yourhandle" autocomplete="off" spellcheck="false">
-            <p class="err" id="err-handle">Enter your X username.</p>
-          </div>
-
-          <div class="field">
-            <label for="addr">Robinhood Chain wallet address</label>
-            <input type="text" id="addr" name="address" placeholder="0x…" autocomplete="off" spellcheck="false">
-            <p class="hint">Public receiving address only — starts with 0x and is 42 characters long.</p>
-            <p class="err" id="err-addr">That doesn't look like a valid 0x address.</p>
-          </div>
-
-          <div class="field">
-            <label for="shareurl">Link to your post</label>
-            <input type="text" id="shareurl" name="shareurl" placeholder="https://x.com/you/status/…" autocomplete="off" spellcheck="false">
-            <p class="hint">Open your post on X, hit share, copy link. This is how the task gets verified.</p>
-            <p class="err" id="err-share">Paste the full link to your post — it should contain /status/.</p>
-          </div>
-
-          <button class="btn" type="submit" id="submit" disabled>Finish the tasks first</button>
-
-          <p class="safe">Never type a seed phrase or private key into this or any other site. BoxHead will never ask for one, will never DM you first, and will never ask you to connect a wallet before mint day.</p>
-        </form>
-
-        <div class="done" id="done">
-          <div class="big">You're on<br>the list</div>
-          <p>Keep the follow active until mint. Everything else gets announced on X first — this site never announces anything before the account does.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-row">
-      <div class="mark">BoxHead</div>
-      <div class="foot-links"><a href="https://x.com/boxheadfun" target="_blank" rel="noopener">X / @boxheadfun</a></div>
-    </div>
-    <p class="fine">theboxhead.fun is the only official BoxHead site. Every link is posted from @boxheadfun first — if you found this anywhere else, check the account before entering anything. Nothing here is an investment or investment advice.</p>
-  </div>
-</footer>
-
 <script>
-window.BOXHEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbxUavNG-jTGRoAwDSO2uX_Pn4_-bt9E6-e97ufRm_w6s0iMkMlxD0nXWQDHbGP2TJHm/exec";
+(function(){
+  var field = document.getElementById('ink');
+  var COUNT = 22;
 
-var shareText = "Everyone's shouting. This one's just standing there. BOXHEAD — 3,333 of them on Robinhood Chain. @boxheadfun";
-document.getElementById('share').href = "https://x.com/intent/post?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent("https://theboxhead.fun/");
-
-var ticks = document.querySelectorAll('[data-task]');
-var submit = document.getElementById('submit');
-var progress = document.getElementById('progress');
-
-function refresh(){
-  var n = 0;
-  ticks.forEach(function(t){ if(t.getAttribute('aria-pressed') === 'true') n++; });
-  progress.textContent = n + ' of 3 done';
-  var all = n === ticks.length;
-  submit.disabled = !all;
-  submit.textContent = all ? 'Join the GTD list' : 'Finish the tasks first';
-}
-
-ticks.forEach(function(t){
-  t.addEventListener('click', function(){
-    t.setAttribute('aria-pressed', t.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
-    refresh();
-  });
-});
-
-function autoTick(linkId, index){
-  var link = document.getElementById(linkId);
-  if(!link) return;
-  link.addEventListener('click', function(){
-    setTimeout(function(){
-      ticks[index].setAttribute('aria-pressed', 'true');
-      refresh();
-    }, 800);
-  });
-}
-
-autoTick('follow', 0);
-autoTick('repost', 1);
-autoTick('share', 2);
-
-document.getElementById('form').addEventListener('submit', function(e){
-  e.preventDefault();
-  var handle = document.getElementById('handle');
-  var addr = document.getElementById('addr');
-  var shareurl = document.getElementById('shareurl');
-  var eh = document.getElementById('err-handle');
-  var ea = document.getElementById('err-addr');
-  var es = document.getElementById('err-share');
-  var ok = true;
-
-  var h = handle.value.trim().replace(/^@/, '');
-  if(!/^[A-Za-z0-9_]{1,15}$/.test(h)){ eh.classList.add('show'); handle.setAttribute('aria-invalid','true'); ok = false; }
-  else { eh.classList.remove('show'); handle.removeAttribute('aria-invalid'); }
-
-  var a = addr.value.trim();
-  if(!/^0x[a-fA-F0-9]{40}$/.test(a)){ ea.classList.add('show'); addr.setAttribute('aria-invalid','true'); ok = false; }
-  else { ea.classList.remove('show'); addr.removeAttribute('aria-invalid'); }
-
-  var s = shareurl.value.trim();
-  if(!/^https?:\/\/(x|twitter)\.com\/[A-Za-z0-9_]+\/status\/\d+/.test(s)){ es.classList.add('show'); shareurl.setAttribute('aria-invalid','true'); ok = false; }
-  else { es.classList.remove('show'); shareurl.removeAttribute('aria-invalid'); }
-
-  if(!ok) return;
-
-  submit.disabled = true;
-  submit.textContent = 'Sending…';
-
-  var body = 'handle=' + encodeURIComponent('@' + h)
-           + '&address=' + encodeURIComponent(a)
-           + '&shareurl=' + encodeURIComponent(s);
-
-  fetch(window.BOXHEAD_ENDPOINT, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: body
-  }).then(function(){
-    document.getElementById('form').style.display = 'none';
-    document.getElementById('done').classList.add('show');
-  }).catch(function(){
-    submit.disabled = false;
-    submit.textContent = 'Try again';
-  });
-});
-
-refresh();
+  for(var i = 0; i < COUNT; i++){
+    var d = document.createElement('div');
+    d.className = 'drop';
+    d.style.left = (Math.random() * 100) + '%';
+    d.style.animationDuration = (3.5 + Math.random() * 4.5) + 's';
+    d.style.animationDelay = (Math.random() * 6) + 's';
+    var s = 0.5 + Math.random() * 1.1;
+    d.style.width = (14 * s) + 'px';
+    d.style.height = (18 * s) + 'px';
+    d.style.opacity = (0.12 + Math.random() * 0.18).toFixed(2);
+    field.appendChild(d);
+  }
+})();
 </script>
 
 </body>
